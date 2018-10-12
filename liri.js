@@ -38,9 +38,12 @@ switch (liriResponse) {
 };
 
 function movieThis() {
+    if (!movieName) {
+        movieName = "Mr Nobody";
 
+    }
     var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=76a0debf";
-
+    
     request(queryURL, function (error, response, body) {
 
         if (!error && response.statusCode === 200) {
@@ -57,7 +60,9 @@ function movieThis() {
                 "Year: " + myMovies.Year + "\n"
 
             console.log(queryURLresults);
+
         } else {
+            
             console.log("Error occurred: " + err);
             return;
 
@@ -119,8 +124,8 @@ function concertThis() {
         if (!error && response.statusCode === 200) {
 
             var eventData = JSON.parse(body);
-            var myJSON = JSON.stringify(body);
-            console.log(eventData);
+            // var myJSON = JSON.stringify(body);
+            //console.log(eventData);
             var queryURLresults =
                 "Venue Name: " + eventData[0].venue.name + "\n" +
                 "Lineup: " + eventData[0].lineup + "\n" +
