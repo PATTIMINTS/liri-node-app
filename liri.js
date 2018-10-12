@@ -80,7 +80,7 @@ function spotifyThisSong(trackName) {
 
     }
      
-    // songRequest = trackName;
+    
     spotify.search({
         type: 'track',
         query: trackName
@@ -110,7 +110,7 @@ function spotifyThisSong(trackName) {
         });
 
 };
-
+// concert this
 function concertThis() {
     var queryURL = "https://rest.bandsintown.com/artists/" + artistname + "/events?app_id=3c5eb98e695dc304f85847f7a803873b"
 
@@ -139,26 +139,29 @@ function concertThis() {
     });
 };
 
+// doWhatItSays
+
 function doWhatItSays() {
-    fs.readFile("random.txt", "utf8", function (respError, data) {
 
-        var randomArr = JSON.parse(data);
-        var randomArr = data.split(", ");
-        
-
-        errorFunction();
-
-        if (randomArr[0] === "spotify-this-song") {
-            searchSong(randomArr[1]);
-        } else if (randomArr[0] === "movie-this") {
-            searchMovie(randomArr[1]);
-        } else {
-            (randomArr[0] === "concert-this")
-            searchConcert(randomArr[1]);
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        if (err) {
+          return console.log(err);
         }
+      
         
-    });
+        var output = data.split(",");
+      
+        // Loop Through the newly created output array
+        for (var i = 0; i < output.length; i++) {
+      
+          // Print each element (item) of the array/
+          console.log(output[i]);
+        }
+      });
+    };
+    
+        
+    
 
 
 
-};
