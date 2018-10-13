@@ -43,7 +43,7 @@ function movieThis() {
 
     }
     var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=76a0debf";
-    
+
     request(queryURL, function (error, response, body) {
 
         if (!error && response.statusCode === 200) {
@@ -62,7 +62,7 @@ function movieThis() {
             console.log(queryURLresults);
 
         } else {
-            
+
             console.log("Error occurred: " + err);
             return;
 
@@ -78,14 +78,14 @@ var spotify = new Spotify(keys.spotify);
 function spotifyThisSong(trackName) {
     var trackName = process.argv[3];
 
-        
+
 
     if (!trackName) {
         trackName = "Friday I'm in Love";
 
     }
-     
-    
+
+
     spotify.search({
         type: 'track',
         query: trackName
@@ -96,7 +96,7 @@ function spotifyThisSong(trackName) {
                 var trackInfo = data.tracks.items;
                 for (var i = 0; i < 5; i++) {
                     if (trackInfo[i] != undefined) {
-                        
+
                         var spotifyResults =
                             "Artist: " + trackInfo[i].artists[0].name + "\n" +
                             "Song: " + trackInfo[i].name + "\n" +
@@ -124,8 +124,8 @@ function concertThis() {
         if (!error && response.statusCode === 200) {
 
             var eventData = JSON.parse(body);
-            // var myJSON = JSON.stringify(body);
-            //console.log(eventData);
+            
+            
             var queryURLresults =
                 "Venue Name: " + eventData[0].venue.name + "\n" +
                 "Lineup: " + eventData[0].lineup + "\n" +
@@ -148,25 +148,25 @@ function concertThis() {
 
 function doWhatItSays() {
 
-    fs.readFile("random.txt", "utf8", function(err, data) {
+    fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
-          return console.log(err);
+            return console.log(err);
         }
-      
-        
+
+
         var output = data.split(",");
-      
+
         // Loop Through the newly created output array
         for (var i = 0; i < output.length; i++) {
-      
-          // Print each element (item) of the array/
-          console.log(output[i]);
+
+            // Print each element (item) of the array/
+            console.log(output[i]);
         }
-      });
-    };
-    
-        
-    
+    });
+};
+
+
+
 
 
 
